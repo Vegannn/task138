@@ -12,10 +12,9 @@ server.on('request', function (request, response) {
         });
 
     } else {
-        response.statusCode = 404;
-        fs.readFile('./404.html', 'utf-8', function(err, data) {
-	    response.write(data);
-	        response.end();
+        response.setHeader("Content-Type", "image/jpeg");
+        fs.readFile('./cat.jpg', function(err, data) {
+            response.end(data);
 	    });
     }
 });
